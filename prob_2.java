@@ -1,6 +1,6 @@
 public class prob_2 {
     public static void main(String args[]) {
-        Solution solution = new Solution();
+        Solution_2 solution = new Solution_2();
         ListNode l1, l2, sum;
         // Note here that the digits are stored in reverse order
         l1 = new ListNode(); l1.val = 9;
@@ -24,7 +24,7 @@ class ListNode {
   }
  
 
-class Solution {
+class Solution_2 {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode sum = new ListNode();
         ListNode tmp = sum;
