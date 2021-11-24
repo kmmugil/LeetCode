@@ -3,7 +3,7 @@ import java.util.Map;
 
 public class prob_1 {
     public static void main(String args[]) {
-        Solution solution = new Solution();
+        Solution_1 solution = new Solution_1();
         int[] nums = {2,7,11,15};
         int target = 9;
         int[] indices = solution.twoSum(nums, target);
@@ -12,7 +12,7 @@ public class prob_1 {
     }
 }
 
-class Solution {
+class Solution_1 {
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> reverseMap = new HashMap<>();
         int[] indices = new int[2];
