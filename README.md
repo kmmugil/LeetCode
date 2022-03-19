@@ -1,2 +1,2 @@
 # LeetCode
-Compilation of problem solutions in LeetCode
+Compilation of solutions for problems in LeetCode
