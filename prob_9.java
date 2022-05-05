@@ -6,7 +6,7 @@ import java.util.Stack;
 public class prob_9 {
     public static void main(String[] args) {
         Solution_9 solution = new Solution_9();
-        System.out.println(solution.isPalindrome_1(67876));
+        System.out.println(solution.isPalindrome(67876));
     }
 }
 
@@ -22,6 +22,7 @@ class Solution_9 {
         return true;
     }
 
+    // doesn't capture negative palindromes
     public boolean isPalindrome_1(int x) {
         List<Integer> intArray = new ArrayList<>();
         Stack<Integer> stack = new Stack<>();
