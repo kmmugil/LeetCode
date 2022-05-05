@@ -33,13 +33,11 @@ class Solution_9 {
         if(x%10 != 0) {
             intArray.add(x%10);
         }
-        System.out.println(intArray);
         for (int i = 0; i < intArray.size()/2; i++) {
             stack.push(intArray.get(i));
         }
         for (int i = intArray.size()/2+1; i < intArray.size(); i++) {
             int tmp = stack.pop();
-            System.out.println(tmp+","+ intArray.get(i));
             if(tmp != intArray.get(i)) return false;
         }
         return true;
