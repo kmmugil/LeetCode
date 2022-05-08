@@ -115,7 +115,12 @@ class Solution_456 {
         return false;
     }
 
-    // finding the max value of the all possible k's smaller than j (done through stack)
+    /**
+     * The idea is to compare the j and k numbers first since they are adjacent to each other and then finding iterating down for possible i's
+     * Finding the max value of the all possible k's smaller than j (done through stack)
+     * @param nums
+     * @return
+     */
     public boolean find132pattern_2(int[] nums) {
         Stack<Integer> stack = new Stack<>();
         int tmpMax = Integer.MIN_VALUE;
