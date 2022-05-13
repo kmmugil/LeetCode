@@ -5,13 +5,13 @@ public class prob_117 {
     public static void main(String[] args) {
         Solution_117 solution = new Solution_117();
         Integer[] input = {1,2,3,4,5,null,7};
-//        Node root = solution.parseTree(input);
-        Node left = new Node(2, new Node(4, null, null, null), new Node(5, null, null, null), null);
-        Node right = new Node(3, null, new Node(7, null, null, null), null);
-        Node root = new Node(1, left, right, null);
-        root = solution.connect(root); // doesn't matter as all values in java are passed by reference
+        Node root = solution.parseTree(input);
+//        Node left = new Node(2, new Node(4, null, null, null), new Node(5, null, null, null), null);
+//        Node right = new Node(3, null, new Node(7, null, null, null), null);
+//        Node root = new Node(1, left, right, null);
+//        root = solution.connect(root); // doesn't matter as all values in java are passed by reference
         solution.printNext(root, null, 1);
-        solution.printNext_v2(root, null);
+//        solution.printNext_v2(root, null);
     }
 }
 
@@ -36,7 +36,39 @@ class Solution_117 {
     }
 
     public Node parseTree(Integer[] nodes) {
-        return null;
+        if(nodes.length == 0) return null;
+        List<Node> nodeList = new ArrayList<>();
+        int depth = 1;
+        nodeList.add(new Node(nodes[0], null, null, null));
+        Node prevNode = null;
+        for (int i = 1; i < nodes.length ; i++) {
+            if(nodes[i] == null) {
+                nodeList.add(null);
+            } else {
+                nodeList.add(new Node(nodes[i], null, null, null));
+            }
+            if(i == Math.pow(2, depth) - 1) {
+                depth++;
+            } else {
+                if(prevNode != null && nodeList.get(i) != null) prevNode.next = nodeList.get(i);
+            }
+            if(nodeList.get(i) != null) prevNode = nodeList.get(i);
+        }
+        int offset, tmpDepth = 0;
+        for(int i = 0; i < nodes.length && tmpDepth < depth; i++) {
+            int prevLevelCount = (int) (Math.pow(2, tmpDepth) - 1);
+            int currLevelCount = prevLevelCount * 2 + 1;
+            offset = i - (prevLevelCount);
+            int childrenOffset = (currLevelCount) + (offset*2);
+            if(childrenOffset < nodes.length) {
+                nodeList.get(i).left = nodeList.get(childrenOffset);
+                nodeList.get(i).right = nodeList.get(childrenOffset + 1);
+            }
+            if(i == currLevelCount - 1) {
+                tmpDepth += 1;
+            }
+        }
+        return nodeList.get(0);
     }
 
     public void printNext(Node node, List<List<Integer>> bfList, int level) {
