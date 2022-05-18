@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+/**
+ * Code to check if the given undirected graph is bipartite
+ */
 public class prob_785 {
     public static void main(String[] args) {
 //        int[][] graph = {{1,2,3}, {0,2}, {0,1,3}, {0,2}};
