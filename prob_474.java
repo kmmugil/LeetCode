@@ -73,9 +73,9 @@ class Solution_474 {
 
     /**
      * Solution using Dynamic Programming - tabulation (bottom-up) approach
-     * Not to be confused with the for loop iterating down (this is imperative since on addition of any string, the available occupancy decreases
+     * Not to be confused with the for loop iterating down (this is imperative since on addition of any string, the available occupancy decreases)
      * Here bottom-up means considering that the string array contains one string after another
-     * Instead of reducing for a full string array to just one string in the array
+     * Instead of reducing from a full string array to just one string in the array
      */
     public int findMaxForm_v2(String[] strs, int m, int n) {
         int[][] tabulation = new int[m + 1][n + 1];

@@ -112,7 +112,7 @@ class Solution_32 {
     private char[] charArray;
 
     /**
-     * Solution using Dynamic Programming (less efficient than the solution using stack)
+     * Solution using Dynamic Programming
      * Here the sub-problems are longest substrings ending at a particular index
      * Goal: find that val where the index = s.length()
      * Using recursion we could traverse the charArray from left to right/ right to left
