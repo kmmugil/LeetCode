@@ -1,7 +1,5 @@
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
 
 /**
  * 354. Russian Doll Envelopes
@@ -132,6 +130,21 @@ class Solution_354 {
 
     /**
      * Solution using the longest increasing subsequence idea
+     * This problem is asking for LIS in two dimensions, width and height. Sorting the width reduces the problem by one dimension. If width is strictly increasing,
+     * the problem is equivalent to finding LIS in only the height dimension. However, when there is a tie in width, a strictly increasing sequence in height
+     * may not be a correct solution. For example, [[3,3] cannot fit in [3,4]]. Sorting height in descending order when there is a tie prevents
+     * such a sequence to be included in the solution.
+     *
+     * The same idea can be applied to problems of higher dimensions. For example, box fitting is three dimensions, width, height, and length. Sorting width
+     * ascending and height descending reduces the problem by one dimension. Finding the LIS by height further reduces the problem by another dimension.
+     * When find LIS based on only length, it becomes a standard LIS problem.
+     *
+     * binary search solution: O(nlogn)
+     * width is increasing, but if two widths are the same, the height is decreasing
+     * after sorting, all envolopes are valid 'based on width', so we just binary search based on 'heights'
+     * to choose 'some of them' to meet the requirement
+     * Ex. after sorting: (1,3), (3,5), (6,8), (6,7), (8,4), (9,5)
+     * transform to question find LIS: [3,5,8,7,4,5] => like '300. Longest Increasing Subsequence'
      */
     public int maxEnvelopes_v3(int[][] envelopes) {
         Comparator<int[]> envelopeComparator = this.generateEnvelopeComparator();
