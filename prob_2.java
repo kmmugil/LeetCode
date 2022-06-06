@@ -1,5 +1,5 @@
 public class prob_2 {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Solution_2 solution = new Solution_2();
         ListNode l1, l2, sum;
         // Note here that the digits are stored in reverse order
@@ -16,12 +16,25 @@ public class prob_2 {
 
 //   Definition for singly-linked list.
 class ListNode {
-      int val;
-      ListNode next;
-      ListNode() {}
-      ListNode(int val) { this.val = val; }
-      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-  }
+    int val;
+    ListNode next;
+    ListNode() {}
+    ListNode(int val) { this.val = val; }
+    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        ListNode node = this;
+        do {
+            s.append(node.val);
+            s.append(",");
+            node = node.next;
+        } while(node != null);
+        s.deleteCharAt(s.length()-1);
+        return String.valueOf(s);
+    }
+}
  
 
 class Solution_2 {
