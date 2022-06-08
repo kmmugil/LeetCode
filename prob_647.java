@@ -11,7 +11,8 @@ public class prob_647 {
         Solution_647 solution = new Solution_647();
 //        String s = "abc";
         String s = "aaa";
-        System.out.println(solution.countSubstrings(s));
+        String s1 = "aabb";
+        System.out.println(solution.countSubstrings(s1));
     }
 }
 

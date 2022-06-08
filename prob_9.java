@@ -3,6 +3,15 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Stack;
 
+/**
+ * 9. Palindrome Number
+ * Easy
+ * Given an integer x, return true if x is palindrome integer.
+ *
+ * An integer is a palindrome when it reads the same backward as forward.
+ *
+ * For example, 121 is a palindrome while 123 is not.
+ */
 public class prob_9 {
     public static void main(String[] args) {
         Solution_9 solution = new Solution_9();
@@ -10,6 +19,10 @@ public class prob_9 {
     }
 }
 
+/**
+ * Solution using traversing the array using two indexes
+ * Time Complexity - O(n/2), Space Complexity = O(n)
+ */
 class Solution_9 {
     public boolean isPalindrome(int x) {
         String intString = String.valueOf(x);
