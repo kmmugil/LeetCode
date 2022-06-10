@@ -18,7 +18,8 @@ public class prob_1332 {
         Solution_1332 solution = new Solution_1332();
         String s = "abcaba";
         String s1 = "abbaaaab";
-        System.out.println(solution.removePalindromeSub(s));
+//        System.out.println(solution.removePalindromeSub(s));
+        System.out.println(solution.removePalindromeSub_v2(s));
 //        System.out.println(solution.removeLongestPalindromeSub(s1));
     }
 }
@@ -38,6 +39,18 @@ class Solution_1332 {
         return 1;
     }
 
+    public int removePalindromeSub_v2(String s) {
+        int[] count = new int[s.length()*2-1];
+        int min = Integer.MAX_VALUE;
+        String[] results = this.removeLongestPalindromeSub(s);
+        for (int i = 0; i < results.length; i++) {
+            if(results[i].length() == 0) return count[i]+1;
+            count[i]++;
+            min = Math.min(min, count[i]+this.removePalindromeSub_v2(results[i]));
+        }
+        return min;
+    }
+
     /**
      * This method is good for finding the longest palindrome (of more than just 2 letters)
      * But removing the longest palindrome doesn't guarantee that the remaining string can be reduced to "" in the
@@ -46,7 +59,7 @@ class Solution_1332 {
      * longest palindrome subsequence - baaaab, remaining string - ab, it takes two more reductions to reduce to "" - Total=3
      * But reducing like aaaaaa and bbb gives the least Total possible = 2
      */
-    public String removeLongestPalindromeSub(String s) {
+    public String[] removeLongestPalindromeSub(String s) {
         String[] strings = new String[s.length()*2-1];
         int min = Integer.MAX_VALUE, k = 0;
         String[] lrList;
@@ -58,7 +71,7 @@ class Solution_1332 {
             if(min == strings[i].length()) k = i;
         }
         System.out.println(strings[k]);
-        return strings[k];
+        return strings;
     }
 
     private String[] removeLongestPalindromeSubMid(String s, int i, int j) {
