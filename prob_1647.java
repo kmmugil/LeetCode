@@ -27,7 +27,8 @@ public class prob_1647 {
 
 /**
  * Solution using sorting and hashMap
- * Time Complexity - O(NlogN), Space Complexity - O(n)
+ * Time Complexity - O(N + KlogK), Space Complexity - O(k)
+ * Where k is the # of characters in the english alphabet
  */
 class Solution_1647 {
     public int minDeletions(String s) {
