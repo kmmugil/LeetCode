@@ -1,6 +1,5 @@
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -44,16 +43,62 @@ class Solution_1647 {
         }
         int[] counts = new int[charCount.size()];
         int i = 0;
-        Iterator<Map.Entry<Character, Integer>> iterator = charCount.entrySet().iterator();
-        while (iterator.hasNext()) {
-            counts[i] = iterator.next().getValue();
+        for (Map.Entry<Character, Integer> characterIntegerEntry : charCount.entrySet()) {
+            counts[i] = characterIntegerEntry.getValue();
             i++;
-            iterator.remove();
         }
         Arrays.sort(counts);
         System.out.println(Arrays.toString(counts));
         int minCount = 0, equalCount = 0;
         for (i = counts.length - 2; i >= 0; i--) {
+            if (counts[i + 1] > counts[i]) {
+                if (equalCount != 0) {
+                    int j, tmp = counts[i + 1];
+                    for (j = 1; j <= equalCount && tmp != 0; j++) {
+                        minCount += j;
+                        tmp--;
+                    }
+                    for (; j <= equalCount; j++) {
+                        minCount += counts[i + 1];
+                    }
+                    counts[i + 1] = tmp;
+                    equalCount = 0;
+                    i++;
+                }
+            } else if (counts[i + 1] == counts[i]) {
+                equalCount += 1;
+            } else {
+                minCount += counts[i] - counts[i + 1];
+                counts[i] = counts[i + 1];
+                equalCount += 1;
+            }
+        }
+        if (equalCount != 0 && counts[0] != 0) {
+            int j, tmp = counts[0];
+            for (j = 1; j <= equalCount && tmp != 0; j++) {
+                minCount += j;
+                tmp--;
+            }
+            for (; j <= equalCount; j++) {
+                minCount += counts[0];
+            }
+        }
+        return minCount;
+    }
+
+    /**
+     * Improvement in accumulating the frequencies in the array
+     */
+    public int minDeletions_v2(String s) {
+        int[] counts = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            counts[s.charAt(i) - 'a']++;
+        }
+
+        Arrays.sort(counts);
+        System.out.println(Arrays.toString(counts));
+        int minCount = 0, equalCount = 0;
+        for (int i = counts.length - 2; i >= 0; i--) {
             if (counts[i + 1] > counts[i]) {
                 if (equalCount != 0) {
                     int j, tmp = counts[i + 1];
