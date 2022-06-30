@@ -16,7 +16,7 @@ public class prob_462 {
     public static void main(String[] args) {
         Solution_462 solution = new Solution_462();
         int[] nums = {1, 2, 3};
-        System.out.println(solution.minMoves2(nums));
+        System.out.println(solution.minMoves2_v2(nums));
     }
 
 }
@@ -33,21 +33,34 @@ class Solution_462 {
      */
     public int minMoves2(int[] nums) {
         Arrays.sort(nums);
-        int median, moveCount, mid = (nums.length - 1) / 2;
-        median = nums[mid];
-        moveCount = this.findMoves(nums, median);
-        if ((nums.length - 1) % 2 == 1 || mid == nums.length - 1) return moveCount;
-        median = nums[mid + 1];
-        moveCount = Math.min(moveCount, this.findMoves(nums, median));
-        return moveCount;
-    }
-
-    private int findMoves(int[] nums, int median) {
-        int moveCount = 0;
+        int median, moveCount = 0;
+        median = nums[(nums.length - 1) / 2];
         for (int num : nums) {
             moveCount += Math.abs(num - median);
         }
         return moveCount;
+    }
+
+    /**
+     * Optimization using the fact that a[n-1-i]-a[median] + a[median]-a[i] translates to a[n-1-i]-a[i]
+     * <p>
+     * The final count doesn't actually depend on the median value
+     */
+    public int minMoves2_v2(int[] nums) {
+        Arrays.sort(nums);
+        int moveCount = 0, mid = (nums.length - 1) / 2;
+        for (int i = 0; i < mid; i++) {
+            moveCount += nums[nums.length - 1 - i] - nums[i];
+        }
+        return moveCount;
+    }
+
+    /**
+     * Solution using quick selection
+     */
+    public int minMoves2_v3(int[] nums) {
+        // TODO Implement solution using quick selection
+        return 0;
     }
 
 }
