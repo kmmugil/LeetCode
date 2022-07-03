@@ -41,7 +41,18 @@ class Solution_376 {
      * <p>
      * Time Complexity - O(n), Space Complexity - O(1)
      * <p>
-     * TODO: Prove that the greedy approach is optimal
+     * Proof:
+     * <p>
+     * There are two cases for each comparison (W.L.O.G. assume a[i] > a[i+1])
+     * <p>
+     * Then if memo[0] = memo[0] is valid even without comparison with right elements because if a[i+1] was part of the +ve diff start sequence, removing it and adding
+     * a[i+1] would yield the same result. If a[i+1] wasn't include in the +ve diff start sequence, the same logic holds for the next element
+     * <p>
+     * memo[1] = 1+memo[0] is valid and is greater than memo[1] because
+     * <p>
+     * if memo[0] > memo[1] then memo[0]+1 > memo[1], if memo[0] < memo[1] then memo[0]+1 == memo[1]
+     * <p>
+     * Because at any point of time, the max difference between memo[0] ad memo[1] == 1
      */
     public int wiggleMaxLength(int[] nums) {
         int[] memo = new int[2];
