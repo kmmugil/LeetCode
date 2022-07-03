@@ -29,9 +29,9 @@ public class prob_376 {
 class Solution_376 {
 
     /**
-     * Reverse iterating the array - Greedy algorithm
+     * Greedy algorithm/ Dynamic Programming
      * <p>
-     * Here the trick is to reverse iterate the array and each for each iteration we compare the neighbouring elements.
+     * Reverse or forward iteration, both yield the correct result
      * <p>
      * If nums[i] < nums[i+1] then we add 1 to memo[1] (contains -ve diff) and assign to memo[0] (result becomes +ve diff)
      * <p>
