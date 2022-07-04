@@ -52,7 +52,7 @@ class Solution_376 {
      * <p>
      * if memo[0] > memo[1] then memo[0]+1 > memo[1], if memo[0] < memo[1] then memo[0]+1 == memo[1]
      * <p>
-     * Because at any point of time, the max difference between memo[0] ad memo[1] == 1
+     * Because at any point of time, the max difference between memo[0] and memo[1] == 1
      */
     public int wiggleMaxLength(int[] nums) {
         int[] memo = new int[2];
