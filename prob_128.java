@@ -28,10 +28,10 @@ class Solution_128 {
             hashtable.put(num, 1);
         }
         int maxLongestStreak = 0, longestStreak, nextVal;
-        for (int i = 0; i < nums.length; i++) {
-            if (hashtable.get(nums[i] - 1) != null) continue;
+        for (int num : nums) {
+            if (hashtable.get(num - 1) != null) continue;
             longestStreak = 1;
-            nextVal = nums[i] + 1;
+            nextVal = num + 1;
             while (hashtable.get(nextVal) != null) {
                 longestStreak++;
                 nextVal++;
@@ -59,11 +59,11 @@ class Solution_128 {
             hashSet.add(num);
         }
         int maxLongestStreak = 0, longestStreak, nextVal;
-        for (int i = 0; i < nums.length; i++) {
+        for (int num : nums) {
             // this is key optimization which avoids counting while in the middle of a streak
-            if (hashSet.contains(nums[i] - 1)) continue;
+            if (hashSet.contains(num - 1)) continue;
             longestStreak = 1;
-            nextVal = nums[i] + 1;
+            nextVal = num + 1;
             while (hashSet.contains(nextVal)) {
                 longestStreak++;
                 nextVal++;
