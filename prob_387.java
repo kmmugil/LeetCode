@@ -21,6 +21,11 @@ public class prob_387 {
 
 }
 
+/**
+ * Solution using simple array traversal
+ * <p>
+ * Time Complexity - O(N), Space Complexity - O(N)
+ */
 class Solution_387 {
 
     public int firstUniqChar(String s) {
