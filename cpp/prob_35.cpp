@@ -5,7 +5,7 @@
 using namespace std;
 
 class Solution {
-    public:
+public:
     Solution() {
         cout << "Constructor of solution for prob_35 called" << endl;
     }
@@ -16,13 +16,13 @@ class Solution {
         int left, right, mid;
         left = 0;
         right = nums.size() - 1;
-        while (left <= right) {
+        while(left <= right) {
             mid = (left + right) / 2;
-            if (nums.at(mid) == target) return mid;
-            if (nums.at(mid) < target) left = mid + 1;
+            if(nums.at(mid) == target) return mid;
+            if(nums.at(mid) < target) left = mid + 1;
             else right = mid - 1;
         }
-        if (nums.at(left) < target) return left + 1;
+        if(nums.at(left) < target) return left + 1;
         else return left;
     }
 } solution;
