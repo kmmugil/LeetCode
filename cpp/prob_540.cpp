@@ -32,12 +32,10 @@ public:
             if(mid > 0 && nums.at(mid - 1) == nums.at(mid)) {
                 if((mid - left + 1) % 2 == 0) left = mid + 1;
                 else right = mid - 2;
-            }
-            else if(mid < nums.size() - 1 && nums.at(mid) == nums.at(mid + 1)) {
+            } else if(mid < nums.size() - 1 && nums.at(mid) == nums.at(mid + 1)) {
                 if((right - mid + 1) % 2 == 0) right = mid - 1;
                 else left = mid + 2;
-            }
-            else return nums.at(mid);
+            } else return nums.at(mid);
         }
         return nums.at(left);
     }
