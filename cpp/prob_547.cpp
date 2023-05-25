@@ -32,7 +32,6 @@ public:
         this->isConnected = isConnected;
         int provinceCount = 0;
         for(size_t i = 0; i < isConnected.size(); i++) {
-            /* code */
             if(vertices[i] != 0) continue;
             provinceCount++;
             this->recurseEdges(i);
@@ -44,7 +43,6 @@ public:
         if(vertices[x] == 1) return;
         vertices[x] = 1;
         for(size_t i = 0; i < isConnected.size(); i++) {
-            /* code */
             if(x == i || isConnected.at(x).at(i) != 1) continue;
             this->recurseEdges(i);
         }
