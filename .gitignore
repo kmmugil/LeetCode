@@ -1,3 +1,7 @@
 ### Java Class Files ###
 *.class
 *.vscode
+
+### CPP executables ###
+*.out
+*.exe
